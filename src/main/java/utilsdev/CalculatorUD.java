@@ -60,8 +60,7 @@ public class CalculatorUD {
 	}
 
 	/**
-	 * Multiplication of two parameters of type Integer, numberOne multiplied by the
-	 * numberTwo.
+	 * Multiplication of two parameters, the first by the second.
 	 * 
 	 * @param numberOne The first parameter requested for the multiplication between
 	 *                  the two parameters.
@@ -119,8 +118,7 @@ public class CalculatorUD {
 	}
 
 	/**
-	 * Multiplication of two parameters of type int, numberOne multiplied by the
-	 * numberTwo.
+	 * Multiplication of two parameters, the first by the second.
 	 * 
 	 * @param numberOne The first parameter requested for the multiplication between
 	 *                  the two parameters.
@@ -180,8 +178,7 @@ public class CalculatorUD {
 	}
 
 	/**
-	 * Multiplication of two parameters of type Double, numberOne multiplied by the
-	 * numberTwo.
+	 * Multiplication of two parameters, the first by the second.
 	 * 
 	 * @param numberOne The first parameter requested for the multiplication between
 	 *                  the two parameters.
@@ -239,8 +236,7 @@ public class CalculatorUD {
 	}
 
 	/**
-	 * Multiplication of two parameters of type float, numberOne multiplied by the
-	 * numberTwo.
+	 * Multiplication of two parameters, the first by the second.
 	 * 
 	 * @param numberOne The first parameter requested for the multiplication between
 	 *                  the two parameters.
@@ -299,8 +295,7 @@ public class CalculatorUD {
 	}
 
 	/**
-	 * Multiplication of two parameters of type BigDecimal, numberOne multiplied by
-	 * the numberTwo.
+	 * Multiplication of two parameters, the first by the second.
 	 * 
 	 * @param numberOne The first parameter requested for the multiplication between
 	 *                  the two parameters.
@@ -359,8 +354,7 @@ public class CalculatorUD {
 	}
 
 	/**
-	 * Sum of two parameters of type Integer and other BigDecimal, numberOne minus
-	 * numberTwo.
+	 * Sum of two parameters, the first by the second.
 	 * 
 	 * @param numberOne The first parameter requested is the subtraction of the two
 	 *                  parameters.
@@ -370,6 +364,66 @@ public class CalculatorUD {
 	 *         Integer.
 	 */
 	public static Integer multiply(Integer numberOne, BigDecimal numberTwo) {
+		return numberOne * numberTwo.intValue();
+	}
+
+	/**
+	 * Calculator Integer Double (Return Integer)
+	 */
+
+	/**
+	 * Sum of two parameters, the first by the second.
+	 * 
+	 * @param numberOne The first parameter requested is the sum of the two
+	 *                  parameters.
+	 * @param numberTwo The second parameter requested for the sum between the two
+	 *                  parameters.
+	 * @return Result of the sum of the first parameter by the second with type
+	 *         Integer.
+	 */
+	public static Integer sum(Integer numberOne, Double numberTwo) {
+		return numberOne + numberTwo.intValue();
+	}
+
+	/**
+	 * Subtraction of two parameters, the first by the second.
+	 * 
+	 * @param numberOne The first parameter requested is the subtraction of the two
+	 *                  parameters.
+	 * @param numberTwo The second parameter requested for the subtraction between
+	 *                  the two parameters.
+	 * @return Result of subtracting the first parameter from the second with type
+	 *         Integer.
+	 */
+	public static Integer subtract(Integer numberOne, Double numberTwo) {
+		return numberOne - numberTwo.intValue();
+	}
+
+	/**
+	 * Division of two parameters, the first by the second.
+	 * 
+	 * @param numberOne The first parameter requested is the subtraction of the two
+	 *                  parameters.
+	 * @param numberTwo The second parameter requested for the subtraction between
+	 *                  the two parameters.
+	 * @return Result of dividing the first parameter by the second with type
+	 *         Integer.
+	 */
+	public static Integer divide(Integer numberOne, Double numberTwo) {
+		return numberOne / numberTwo.intValue();
+	}
+
+	/**
+	 * Sum of two parameters, the first by the second.
+	 * 
+	 * @param numberOne The first parameter requested is the subtraction of the two
+	 *                  parameters.
+	 * @param numberTwo The second parameter requested for the subtraction between
+	 *                  the two parameters.
+	 * @return Result of multiplying the first parameter by the second with type
+	 *         Integer.
+	 */
+	public static Integer multiply(Integer numberOne, Double numberTwo) {
 		return numberOne * numberTwo.intValue();
 	}
 
