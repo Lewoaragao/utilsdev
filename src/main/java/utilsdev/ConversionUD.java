@@ -5,7 +5,11 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ConversionUD {
 
@@ -27,7 +31,7 @@ public class ConversionUD {
 	 * @return String in the format "yyyy-MM-dd" with "yyyy" being the year, "MM"
 	 *         the month and "dd" the day.
 	 */
-	public static String convertDateToString(Date date) {
+	public static String dateToString(Date date) {
 		return sdf.format(date);
 	}
 
@@ -40,7 +44,7 @@ public class ConversionUD {
 	 * @return Date
 	 * @throws ParseException Exception if conversion is not possible.
 	 */
-	public static Date convertStringToDate(String dateString) throws ParseException {
+	public static Date stringToDate(String dateString) throws ParseException {
 		return sdf.parse(dateString);
 	}
 
@@ -51,7 +55,7 @@ public class ConversionUD {
 	 * @return Um objeto LocalDateTime representando a mesma data e hora que o
 	 *         objeto Date.
 	 */
-	public static LocalDateTime convertDateToLocalDateTime(Date date) {
+	public static LocalDateTime dateToLocalDateTime(Date date) {
 		return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
 	}
 
@@ -62,7 +66,7 @@ public class ConversionUD {
 	 * @return Um objeto Date representando a mesma data e hora que o objeto
 	 *         LocalDateTime.
 	 */
-	public static Date convertLocalDateTimeToDate(LocalDateTime localDateTime) {
+	public static Date localDateTimeToDate(LocalDateTime localDateTime) {
 		return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
 	}
 
@@ -73,7 +77,7 @@ public class ConversionUD {
 	 * @return Um objeto ZonedDateTime representando a mesma data e hora que o
 	 *         objeto Date.
 	 */
-	public static ZonedDateTime convertDateToZonedDateTime(Date date) {
+	public static ZonedDateTime dateToZonedDateTime(Date date) {
 		return date.toInstant().atZone(ZoneId.systemDefault());
 	}
 
@@ -84,7 +88,7 @@ public class ConversionUD {
 	 * @return Um objeto Date representando a mesma data e hora que o objeto
 	 *         ZonedDateTime.
 	 */
-	public static Date convertZonedDateTimeToDate(ZonedDateTime dateTime) {
+	public static Date zonedDateTimeToDate(ZonedDateTime dateTime) {
 		return Date.from(dateTime.toInstant());
 	}
 
@@ -134,6 +138,170 @@ public class ConversionUD {
 	 */
 	public static int stringToInt(String str) {
 		return Integer.parseInt(str);
+	}
+
+	/**
+	 * Converte a temperatura de Celsius para Fahrenheit.
+	 *
+	 * @param celsius A temperatura em graus Celsius.
+	 * @return A temperatura em graus Fahrenheit.
+	 */
+	public static double celsiusToFahrenheit(double celsius) {
+		return (celsius * 9 / 5) + 32;
+	}
+
+	/**
+	 * Converte a temperatura de Fahrenheit para Celsius.
+	 *
+	 * @param fahrenheit A temperatura em graus Fahrenheit.
+	 * @return A temperatura em graus Celsius.
+	 */
+	public static double fahrenheitToCelsius(double fahrenheit) {
+		return (fahrenheit - 32) * 5 / 9;
+	}
+
+	/**
+	 * Converte horas em minutos.
+	 *
+	 * @param hours As horas a serem convertidas.
+	 * @return O equivalente em minutos.
+	 */
+	public static int hoursToMinutes(int hours) {
+		return hours * 60;
+	}
+
+	/**
+	 * Converte minutos em horas.
+	 *
+	 * @param minutes Os minutos a serem convertidos.
+	 * @return O equivalente em horas.
+	 */
+	public static int minutesToHours(int minutes) {
+		return minutes / 60;
+	}
+
+	/**
+	 * Converte horas em milissegundos.
+	 *
+	 * @param hours As horas a serem convertidas.
+	 * @return O equivalente em milissegundos.
+	 */
+	public static long hoursToMilliseconds(int hours) {
+		return (long) hours * 60 * 60 * 1000;
+	}
+
+	/**
+	 * Converte milissegundos em horas.
+	 *
+	 * @param milliseconds Os milissegundos a serem convertidos.
+	 * @return O equivalente em horas.
+	 */
+	public static int millisecondsToHours(long milliseconds) {
+		return (int) (milliseconds / (60 * 60 * 1000));
+	}
+
+	/**
+	 * Converte minutos em milissegundos.
+	 *
+	 * @param minutes Os minutos a serem convertidos.
+	 * @return O equivalente em milissegundos.
+	 */
+	public static long minutesToMilliseconds(int minutes) {
+		return (long) minutes * 60 * 1000;
+	}
+
+	/**
+	 * Converte milissegundos em minutos.
+	 *
+	 * @param milliseconds Os milissegundos a serem convertidos.
+	 * @return O equivalente em minutos.
+	 */
+	public static int millisecondsToMinutes(long milliseconds) {
+		return (int) (milliseconds / (60 * 1000));
+	}
+
+	/**
+	 * Converte horas em segundos.
+	 *
+	 * @param hours As horas a serem convertidas.
+	 * @return O equivalente em segundos.
+	 */
+	public static int hoursToSeconds(int hours) {
+		return hours * 3600;
+	}
+
+	/**
+	 * Converte segundos em horas.
+	 *
+	 * @param seconds Os segundos a serem convertidos.
+	 * @return O equivalente em horas.
+	 */
+	public static int secondsToHours(int seconds) {
+		return seconds / 3600;
+	}
+
+	/**
+	 * Converte segundos em minutos.
+	 *
+	 * @param seconds Os segundos a serem convertidos.
+	 * @return O equivalente em minutos.
+	 */
+	public static int secondsToMinutes(int seconds) {
+		return seconds / 60;
+	}
+
+	/**
+	 * Converte minutos em segundos.
+	 *
+	 * @param minutes Os minutos a serem convertidos.
+	 * @return O equivalente em segundos.
+	 */
+	public static int minutesToSeconds(int minutes) {
+		return minutes * 60;
+	}
+
+	/**
+	 * Converte segundos em milissegundos.
+	 *
+	 * @param seconds Os segundos a serem convertidos.
+	 * @return O equivalente em milissegundos.
+	 */
+	public static long secondsToMilliseconds(int seconds) {
+		return seconds * 1000L;
+	}
+
+	/**
+	 * Converte milissegundos em segundos.
+	 *
+	 * @param milliseconds Os milissegundos a serem convertidos.
+	 * @return O equivalente em segundos.
+	 */
+	public static int millisecondsToSeconds(long milliseconds) {
+		return (int) (milliseconds / 1000L);
+	}
+
+	/**
+	 * Converte um HashMap em uma lista de pares chave-valor.
+	 *
+	 * @param map O HashMap a ser convertido.
+	 * @return Uma lista de pares chave-valor representando o HashMap.
+	 */
+	public static <K, V> List<Map.Entry<K, V>> convertHashMapToList(HashMap<K, V> map) {
+		return new ArrayList<>(map.entrySet());
+	}
+
+	/**
+	 * Converte uma lista de pares chave-valor em um HashMap.
+	 *
+	 * @param list A lista de pares chave-valor.
+	 * @return Um HashMap representado pela lista de pares chave-valor.
+	 */
+	public static <K, V> HashMap<K, V> convertListToHashMap(List<Map.Entry<K, V>> list) {
+		HashMap<K, V> map = new HashMap<>();
+		for (Map.Entry<K, V> entry : list) {
+			map.put(entry.getKey(), entry.getValue());
+		}
+		return map;
 	}
 
 }

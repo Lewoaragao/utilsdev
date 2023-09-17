@@ -1,6 +1,7 @@
 package utilsdev;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class CalculatorUD {
 
@@ -368,7 +369,7 @@ public class CalculatorUD {
 	}
 
 	/**
-	 * Calculator Integer Double (Return Integer)
+	 * Calculator Integer Double (Return Double)
 	 */
 
 	/**
@@ -381,8 +382,8 @@ public class CalculatorUD {
 	 * @return Result of the sum of the first parameter by the second with type
 	 *         Integer.
 	 */
-	public static Integer sum(Integer numberOne, Double numberTwo) {
-		return numberOne + numberTwo.intValue();
+	public static Double sum(Integer numberOne, Double numberTwo) {
+		return numberOne + numberTwo;
 	}
 
 	/**
@@ -395,8 +396,8 @@ public class CalculatorUD {
 	 * @return Result of subtracting the first parameter from the second with type
 	 *         Integer.
 	 */
-	public static Integer subtract(Integer numberOne, Double numberTwo) {
-		return numberOne - numberTwo.intValue();
+	public static Double subtract(Integer numberOne, Double numberTwo) {
+		return numberOne - numberTwo;
 	}
 
 	/**
@@ -409,8 +410,8 @@ public class CalculatorUD {
 	 * @return Result of dividing the first parameter by the second with type
 	 *         Integer.
 	 */
-	public static Integer divide(Integer numberOne, Double numberTwo) {
-		return numberOne / numberTwo.intValue();
+	public static Double divide(Integer numberOne, Double numberTwo) {
+		return numberOne / numberTwo;
 	}
 
 	/**
@@ -423,8 +424,33 @@ public class CalculatorUD {
 	 * @return Result of multiplying the first parameter by the second with type
 	 *         Integer.
 	 */
-	public static Integer multiply(Integer numberOne, Double numberTwo) {
-		return numberOne * numberTwo.intValue();
+	public static Double multiply(Integer numberOne, Double numberTwo) {
+		return numberOne * numberTwo;
+	}
+
+	/**
+	 * Subtrai duas datas e retorna a quantidade de dias entre elas.
+	 *
+	 * @param date1 A primeira data.
+	 * @param date2 A segunda data.
+	 * @return A quantidade de dias entre as duas datas.
+	 */
+	public static long calculateDaysDifference(Date date1, Date date2) {
+		long millisecondsPerDay = 24 * 60 * 60 * 1000L;
+		long differenceInMillis = Math.abs(date1.getTime() - date2.getTime());
+		return differenceInMillis / millisecondsPerDay;
+	}
+
+	/**
+	 * Subtrai duas datas e retorna a quantidade de dias em milissegundos entre
+	 * elas.
+	 *
+	 * @param date1 A primeira data.
+	 * @param date2 A segunda data.
+	 * @return A quantidade de dias em milissegundos entre as duas datas.
+	 */
+	public static long calculateDaysDifferenceInMillis(Date date1, Date date2) {
+		return Math.abs(date1.getTime() - date2.getTime());
 	}
 
 }
