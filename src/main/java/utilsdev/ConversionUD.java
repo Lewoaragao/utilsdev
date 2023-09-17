@@ -11,6 +11,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Conversion utilities.
+ * 
+ * @author Leonardo Aragão (@Lewoaragao)
+ * @since 14/09/2023
+ */
 public class ConversionUD {
 
 	static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -18,7 +24,6 @@ public class ConversionUD {
 	/**
 	 * Conversion utilities.
 	 * 
-	 * @author Leonardo Aragão (@Lewoaragao)
 	 * @since 14/09/2023
 	 */
 	public ConversionUD() {
@@ -107,7 +112,7 @@ public class ConversionUD {
 	/**
 	 * Converte uma String em um objeto Integer.
 	 *
-	 * @param str A String a ser convertida em Integer.
+	 * @param string A String a ser convertida em Integer.
 	 * @return Um objeto Integer representando o valor contido na String.
 	 * @throws NumberFormatException Se a String não puder ser analisada como um
 	 *                               Integer válido.
@@ -283,6 +288,8 @@ public class ConversionUD {
 	/**
 	 * Converte um HashMap em uma lista de pares chave-valor.
 	 *
+	 * @param <K> O tipo da chave no HashMap.
+	 * @param <V> O tipo do valor no HashMap.
 	 * @param map O HashMap a ser convertido.
 	 * @return Uma lista de pares chave-valor representando o HashMap.
 	 */
@@ -293,6 +300,8 @@ public class ConversionUD {
 	/**
 	 * Converte uma lista de pares chave-valor em um HashMap.
 	 *
+	 * @param <K>  O tipo da chave no HashMap.
+	 * @param <V>  O tipo do valor no HashMap.
 	 * @param list A lista de pares chave-valor.
 	 * @return Um HashMap representado pela lista de pares chave-valor.
 	 */

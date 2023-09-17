@@ -3,12 +3,17 @@ package utilsdev;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * Calculation utilities.
+ * 
+ * @author Leonardo Aragão (@Lewoaragao)
+ * @since 14/09/2023
+ */
 public class CalculatorUD {
 
 	/**
 	 * Calculation utilities.
 	 * 
-	 * @author Leonardo Aragão (@Lewoaragao)
 	 * @since 14/09/2023
 	 */
 	public CalculatorUD() {

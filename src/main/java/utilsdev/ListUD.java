@@ -7,8 +7,22 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * List Utilities.
+ * 
+ * @author Leonardo Aragão (@Lewoaragao)
+ * @since 17/09/2023
+ */
 @SuppressWarnings("unchecked")
 public class ListUD {
+
+	/**
+	 * List Utilities.
+	 * 
+	 * @since 17/09/2023
+	 */
+	public ListUD() {
+	}
 
 	/**
 	 * Filtra uma lista de objetos genéricos com base nos campos não nulos do

@@ -3,12 +3,17 @@ package utilsdev;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Date Utilities.
+ * 
+ * @author Leonardo Aragão (@Lewoaragao)
+ * @since 15/09/2023
+ */
 public class DateUD {
 
 	/**
 	 * Date Utilities.
 	 * 
-	 * @author Leonardo Aragão (@Lewoaragao)
 	 * @since 15/09/2023
 	 */
 	public DateUD() {
