@@ -20,7 +20,7 @@
 	</dependencies>
 	<distributionManagement>
 		<repository>
-			<id>utilsdev</id>
+			<id>github</id>
 			<name>GitHub Coding W3 Apache Maven Packages</name>
 			<url>https://maven.pkg.github.com/codingw3/utilsdev</url>
 		</repository>
