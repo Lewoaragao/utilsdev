@@ -10,7 +10,7 @@ import utilsdev.DateUD;
  * DateUD class tests.
  * 
  * @author Leonardo Aragão (@Lewoaragao)
- * @since 15/09/2023
+ * @since 09/15/2023
  */
 public class DateUDTest extends TestCase {
 
@@ -39,7 +39,7 @@ public class DateUDTest extends TestCase {
 	public void testGetDateWithInvalidMonth() {
 		try {
 			DateUD.getDateWithFirstDayOfMonth(2023, 13);
-			fail("IllegalArgumentException should be thrown for invalid month.");
+			fail("IllegalArgumentException should be thrown for an invalid month.");
 		} catch (IllegalArgumentException e) {
 			// Expected exception
 		}
@@ -48,7 +48,7 @@ public class DateUDTest extends TestCase {
 	public void testGetDateWithNegativeYear() {
 		try {
 			DateUD.getDateWithLastDayOfMonth(-2023, 12);
-			fail("IllegalArgumentException should be thrown for negative year.");
+			fail("IllegalArgumentException should be thrown for a negative year.");
 		} catch (IllegalArgumentException e) {
 			// Expected exception
 		}

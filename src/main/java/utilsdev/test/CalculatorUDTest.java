@@ -10,7 +10,7 @@ import utilsdev.CalculatorUD;
  * CalculatorUD class tests.
  * 
  * @author Leonardo Aragão (@Lewoaragao)
- * @since 14/09/2023
+ * @since 19/14/2023
  */
 @SuppressWarnings("deprecation")
 public class CalculatorUDTest extends TestCase {
@@ -134,7 +134,7 @@ public class CalculatorUDTest extends TestCase {
 		assertEquals(6.0, CalculatorUD.multiply(new Integer(2), 3.0));
 	}
 
-	// Teste unitário para calculateDaysDifference
+	// Unit test for calculateDaysDifference
 	public void testCalculateDaysDifference() {
 		Date date1 = new Date(2023, 9, 16);
 		Date date2 = new Date(2023, 9, 19);
@@ -145,7 +145,7 @@ public class CalculatorUDTest extends TestCase {
 		assertEquals(0L, CalculatorUD.calculateDaysDifference(date1, date2));
 	}
 
-	// Teste unitário para calculateDaysDifferenceInMillis
+	// Unit test for calculateDaysDifferenceInMillis
 	public void testCalculateDaysDifferenceInMillis() {
 		Date date1 = new Date(2023, 9, 16);
 		Date date2 = new Date(2023, 9, 19);

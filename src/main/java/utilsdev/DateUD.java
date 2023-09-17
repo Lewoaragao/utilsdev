@@ -7,74 +7,75 @@ import java.util.Date;
  * Date Utilities.
  * 
  * @author Leonardo Aragão (@Lewoaragao)
- * @since 15/09/2023
+ * @since 09/15/2023
  */
 public class DateUD {
 
 	/**
 	 * Date Utilities.
 	 * 
-	 * @since 15/09/2023
+	 * @since 09/15/2023
 	 */
 	public DateUD() {
 	}
 
 	/**
-	 * Searches for the first day of the month and year of the parameters.
+	 * Finds the first day of the month and year based on the provided parameters.
 	 * 
-	 * @param year  First parameter required to return the date.
-	 * @param month Second parameter required to return the date.
-	 * @return Returns date with first day of the month and year of the parameters.
+	 * @param year  The first required parameter to determine the date.
+	 * @param month The second required parameter to determine the date.
+	 * @return Returns a date representing the first day of the month and year based
+	 *         on the parameters.
 	 */
 	public static Date getDateWithFirstDayOfMonth(int year, int month) {
-		// Check that the month is in the valid range (1 to 12) and the year is
-		// positive.
+		// Check that the month is within the valid range (1 to 12) and the year is
+		// non-negative.
 		if (month < 1 || month > 12 || year < 0) {
 			throw new IllegalArgumentException("Invalid month or year");
 		}
 
-		// Create a Calendar object and configure the year and month.
+		// Create a Calendar object and set the year and month.
 		Calendar calendar = Calendar.getInstance();
-		calendar.clear(); // Clear all fields to avoid surprises.
+		calendar.clear(); // Clear all fields to prevent unexpected values.
 		calendar.set(Calendar.YEAR, year);
-		calendar.set(Calendar.MONTH, month - 1); // Remember that the month starts at 0 (January).
+		calendar.set(Calendar.MONTH, month - 1); // Note that months start at 0 (January).
 
-		// Set the day to 1 to get the first day of the month.
+		// Set the day to 1 to obtain the first day of the month.
 		calendar.set(Calendar.DAY_OF_MONTH, 1);
 
-		// Convert the Calendar back to a Date object.
+		// Convert the Calendar object back to a Date.
 		Date dateWithFirstDayOfMonth = calendar.getTime();
 
 		return dateWithFirstDayOfMonth;
 	}
 
 	/**
-	 * Searches for the last day of the month and year of the parameters.
+	 * Finds the last day of the month and year based on the provided parameters.
 	 * 
-	 * @param year  First parameter required to return the date.
-	 * @param month Second parameter required to return the date.
-	 * @return Returns date with last day of the month and year of the parameters.
+	 * @param year  The first required parameter to determine the date.
+	 * @param month The second required parameter to determine the date.
+	 * @return Returns a date representing the last day of the month and year based
+	 *         on the parameters.
 	 */
 	public static Date getDateWithLastDayOfMonth(int year, int month) {
-		// Verify that the month is in the valid range (1 to 12) and the year is
-		// positive.
+		// Verify that the month is within the valid range (1 to 12) and the year is
+		// non-negative.
 		if (month < 1 || month > 12 || year < 0) {
 			throw new IllegalArgumentException("Invalid month or year");
 		}
 
-		// Create a Calendar object and configure the year and month.
+		// Create a Calendar object and set the year and month.
 		Calendar calendar = Calendar.getInstance();
-		calendar.clear(); // Clear all fields to avoid surprises.
+		calendar.clear(); // Clear all fields to prevent unexpected values.
 		calendar.set(Calendar.YEAR, year);
-		calendar.set(Calendar.MONTH, month - 1); // Remember that the month starts at 0 (January).
+		calendar.set(Calendar.MONTH, month - 1); // Note that months start at 0 (January).
 
 		// Set the day to the last day of the month.
 		calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
 
-		// Convert the Calendar back to a Date object.
+		// Convert the Calendar object back to a Date.
 		Date dateWithLastDayOfMonth = calendar.getTime();
 
 		return dateWithLastDayOfMonth;
 	}
-
 }
