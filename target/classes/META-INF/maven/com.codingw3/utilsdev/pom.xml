@@ -8,6 +8,7 @@
 	<url>https://github.com/codingw3/utilsdev</url>
 	<properties>
 		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>windows-1252</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
 		<dependency>
