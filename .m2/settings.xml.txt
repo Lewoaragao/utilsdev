@@ -28,9 +28,9 @@
 
   <servers>
     <server>
-      <id>github</id>
+      <id>utilsdev</id>
       <username>lewoaragao</username>
-      <password>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</password>
+      <password>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</password>
     </server>
   </servers>
 </settings>
