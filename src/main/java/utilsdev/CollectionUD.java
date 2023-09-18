@@ -164,7 +164,6 @@ public class CollectionUD {
 	 * Sorts a HashMap based on the type of keys.
 	 *
 	 * @param map The HashMap to be sorted.
-	 * 
 	 * @param <K> The type of keys in the HashMap.
 	 * @param <V> The type of values in the HashMap.
 	 * @return A sorted LinkedHashMap based on the type of keys.
@@ -197,13 +196,19 @@ public class CollectionUD {
 	/**
 	 * Sorts a HashMap based on a specified attribute of the values.
 	 *
+	 * @param <K>       The type of keys in the HashMap.
+	 * @param <V>       The type of values in the HashMap.
 	 * @param map       The HashMap to be sorted.
 	 * @param attribute The name of the attribute to use for sorting.
+	 * @param valueType The class type of the values in the HashMap.
 	 * @return A sorted LinkedHashMap based on the specified attribute of the
 	 *         values.
-	 * @throws NoSuchFieldException   If the specified attribute does not exist in
-	 *                                the value class.
-	 * @throws IllegalAccessException If there is an issue accessing the attribute.
+	 * @throws NoSuchFieldException     If the specified attribute does not exist in
+	 *                                  the value class.
+	 * @throws IllegalAccessException   If there is an issue accessing the
+	 *                                  attribute.
+	 * @throws IllegalArgumentException If the attribute is not Comparable or if the
+	 *                                  value class is empty.
 	 */
 	public static <K, V> LinkedHashMap<K, V> sortByValueAttribute(HashMap<K, V> map, String attribute,
 			Class<V> valueType) throws NoSuchFieldException, IllegalAccessException {
@@ -259,6 +264,21 @@ public class CollectionUD {
 		return null;
 	}
 
+	/**
+	 * Retrieves the value of a specified attribute from an object and ensures it's
+	 * Comparable.
+	 *
+	 * @param value     The object from which to retrieve the attribute value.
+	 * @param attribute The name of the attribute to retrieve.
+	 * @param valueType The class type of the object.
+	 * @param <V>       The type of values in the HashMap.
+	 * @return A Comparable representing the attribute value.
+	 * @throws NoSuchFieldException     If the specified attribute does not exist in
+	 *                                  the object.
+	 * @throws IllegalAccessException   If there is an issue accessing the
+	 *                                  attribute.
+	 * @throws IllegalArgumentException If the attribute is not Comparable.
+	 */
 	private static <V> Comparable<?> getAttributeValue(V value, String attribute, Class<V> valueType)
 			throws NoSuchFieldException, IllegalAccessException {
 		Field field = valueType.getDeclaredField(attribute);
