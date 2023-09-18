@@ -2,11 +2,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.codingw3</groupId>
+	<groupId>br.com.lewoaragao</groupId>
 	<artifactId>utilsdev</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0.0-SNAPSHOT</version>
-	<url>https://github.com/codingw3/utilsdev</url>
+	<url>https://github.com/lewoaragao/utilsdev</url>
 	<properties>
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>windows-1252</project.build.sourceEncoding>
@@ -21,8 +21,8 @@
 	<distributionManagement>
 		<repository>
 			<id>github</id>
-			<name>GitHub Coding W3 Apache Maven Packages</name>
-			<url>https://maven.pkg.github.com/codingw3/utilsdev</url>
+			<name>GitHub Lewoaragao Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/lewoaragao/utilsdev</url>
 		</repository>
 	</distributionManagement>
 </project>
