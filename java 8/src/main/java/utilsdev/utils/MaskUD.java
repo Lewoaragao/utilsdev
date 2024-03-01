@@ -1,4 +1,4 @@
-package utilsdev;
+package utilsdev.utils;
 
 public class MaskUD {
 

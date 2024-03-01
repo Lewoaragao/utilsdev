@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import junit.framework.TestCase;
-import utilsdev.CalculatorUD;
+import utilsdev.utils.CalculatorUD;
 
 /**
  * CalculatorUD class tests.

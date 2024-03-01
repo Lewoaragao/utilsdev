@@ -1,4 +1,4 @@
-package utilsdev;
+package utilsdev.utils;
 
 import java.util.Calendar;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package utilsdev;
+package utilsdev.utils;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -412,24 +412,24 @@ public class CalculatorUD {
 	/**
 	 * Subtract two dates and return the number of days between them.
 	 *
-	 * @param date1 The first date.
-	 * @param date2 The second date.
+	 * @param date1 The initial date.
+	 * @param date2 The final date.
 	 * @return The number of days between the two dates.
 	 */
-	public static long calculateDaysDifference(Date date1, Date date2) {
+	public static long calculateDaysDifference(Date initialDate, Date finalDate) {
 		long millisecondsPerDay = 24 * 60 * 60 * 1000L;
-		long differenceInMillis = Math.abs(date1.getTime() - date2.getTime());
+		long differenceInMillis = Math.abs(initialDate.getTime() - finalDate.getTime());
 		return differenceInMillis / millisecondsPerDay;
 	}
 
 	/**
 	 * Subtract two dates and return the number of milliseconds between them.
 	 *
-	 * @param date1 The first date.
-	 * @param date2 The second date.
+	 * @param date1 The initial date.
+	 * @param date2 The final date.
 	 * @return The number of milliseconds between the two dates.
 	 */
-	public static long calculateDaysDifferenceInMillis(Date date1, Date date2) {
-		return Math.abs(date1.getTime() - date2.getTime());
+	public static long calculateDaysDifferenceInMillis(Date initialDate, Date finalDate) {
+		return Math.abs(initialDate.getTime() - finalDate.getTime());
 	}
 }

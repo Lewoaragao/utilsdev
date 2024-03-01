@@ -1,7 +1,7 @@
 package utilsdev.test;
 
 import junit.framework.TestCase;
-import utilsdev.MaskUD;
+import utilsdev.utils.MaskUD;
 
 public class MaskUDTest extends TestCase {
 
