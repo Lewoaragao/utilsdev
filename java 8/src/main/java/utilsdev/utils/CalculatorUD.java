@@ -20,394 +20,188 @@ public class CalculatorUD {
 	}
 
 	/**
-	 * Integer Calculator
-	 */
-
-	/**
-	 * Sum of two parameters, the first added to the second.
+	 * Sums two numbers of the same type and returns the result.
 	 * 
-	 * @param numberOne The first parameter for the sum of the two parameters.
-	 * @param numberTwo The second parameter for the sum between the two parameters.
-	 * @return Result of adding the first parameter to the second as an Integer.
+	 * @param <T>       the type of the numbers to be summed, must extend Number
+	 * @param numberOne the first number to be summed
+	 * @param numberTwo the second number to be summed
+	 * @return the sum of the two numbers
+	 * @throws IllegalArgumentException if the numbers are null or their type is not
+	 *                                  supported
 	 */
-	public static Integer sum(Integer numberOne, Integer numberTwo) {
-		return numberOne + numberTwo;
-	}
+	public static <T extends Number> BigDecimal sum(T numberOne, T numberTwo) {
+    	return sum(numberOne, numberTwo, BigDecimal.class);
+    }
+    
+    public static <T extends Number, R extends Number> R sum(T numberOne, T numberTwo, Class<R> returnType) {
+    	VerifyUD.isNull(numberOne);
+    	VerifyUD.isNull(numberTwo);
+    	
+    	BigDecimal result;
+
+        if (numberOne instanceof Integer && numberTwo instanceof Integer)
+            result = BigDecimal.valueOf(numberOne.intValue()).add(BigDecimal.valueOf(numberTwo.intValue()));
+        else if (numberOne instanceof Double && numberTwo instanceof Double)
+            result = BigDecimal.valueOf(numberOne.doubleValue()).add(BigDecimal.valueOf(numberTwo.doubleValue()));
+        else if (numberOne instanceof Long && numberTwo instanceof Long)
+            result = BigDecimal.valueOf(numberOne.longValue()).add(BigDecimal.valueOf(numberTwo.longValue()));
+        else if (numberOne instanceof Float && numberTwo instanceof Float)
+            result = BigDecimal.valueOf(numberOne.floatValue()).add(BigDecimal.valueOf(numberTwo.floatValue()));
+        else if (numberOne instanceof Short && numberTwo instanceof Short)
+            result = BigDecimal.valueOf(numberOne.shortValue()).add(BigDecimal.valueOf(numberTwo.shortValue()));
+        else if (numberOne instanceof Byte && numberTwo instanceof Byte)
+            result = BigDecimal.valueOf(numberOne.byteValue()).add(BigDecimal.valueOf(numberTwo.byteValue()));
+        else if (numberOne instanceof BigDecimal && numberTwo instanceof BigDecimal)
+            result = ((BigDecimal) numberOne).add((BigDecimal) numberTwo);
+        // Different types
+        else if (numberOne instanceof Number && numberTwo instanceof BigDecimal)
+            result = ConvertUD.toBigDecimal(numberOne).add((BigDecimal) numberTwo);
+        else if (numberOne instanceof BigDecimal && numberTwo instanceof Number)
+            result = ((BigDecimal) numberOne).add(ConvertUD.toBigDecimal(numberTwo));
+        else
+            throw ConstantsUD.EXCEPTION_UNSUPPORTED_NUMBER_TYPE;
+
+        // Convert the result to the specified return type
+        return ConvertUD.convertToReturnType(result, returnType);
+    }
 
 	/**
-	 * Subtraction of two parameters, the first subtracted from the second.
+	 * Subtracts two numbers of the same type and returns the result as BigDecimal.
 	 * 
-	 * @param numberOne The first parameter for the subtraction between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the subtraction between the two
-	 *                  parameters.
-	 * @return Result of subtracting the first parameter from the second as an
-	 *         Integer.
+	 * @param <T>       the type of the numbers to be summed, must extend Number
+	 * @param numberOne the first number to be subtracted
+	 * @param numberTwo the second number to be subtracted
+	 * @return the subtract of the two numbers
+	 * @throws IllegalArgumentException if the numbers are null or their type is not
+	 *                                  supported
 	 */
-	public static Integer subtract(Integer numberOne, Integer numberTwo) {
-		return numberOne - numberTwo;
-	}
+    public static <T extends Number> BigDecimal subtract(T numberOne, T numberTwo) {
+    	return subtract(numberOne, numberTwo, BigDecimal.class);
+    }
+    
+    public static <T extends Number, R extends Number> R subtract(T numberOne, T numberTwo, Class<R> returnType) {
+    	VerifyUD.isNull(numberOne);
+    	VerifyUD.isNull(numberTwo);
+    	
+    	BigDecimal result;
+
+        if (numberOne instanceof Integer && numberTwo instanceof Integer)
+            result = BigDecimal.valueOf(numberOne.intValue()).subtract(BigDecimal.valueOf(numberTwo.intValue()));
+        else if (numberOne instanceof Double && numberTwo instanceof Double)
+            result = BigDecimal.valueOf(numberOne.doubleValue()).subtract(BigDecimal.valueOf(numberTwo.doubleValue()));
+        else if (numberOne instanceof Long && numberTwo instanceof Long)
+            result = BigDecimal.valueOf(numberOne.longValue()).subtract(BigDecimal.valueOf(numberTwo.longValue()));
+        else if (numberOne instanceof Float && numberTwo instanceof Float)
+            result = BigDecimal.valueOf(numberOne.floatValue()).subtract(BigDecimal.valueOf(numberTwo.floatValue()));
+        else if (numberOne instanceof Short && numberTwo instanceof Short)
+            result = BigDecimal.valueOf(numberOne.shortValue()).subtract(BigDecimal.valueOf(numberTwo.shortValue()));
+        else if (numberOne instanceof Byte && numberTwo instanceof Byte)
+            result = BigDecimal.valueOf(numberOne.byteValue()).subtract(BigDecimal.valueOf(numberTwo.byteValue()));
+        else if (numberOne instanceof BigDecimal && numberTwo instanceof BigDecimal)
+            result = ((BigDecimal) numberOne).subtract((BigDecimal) numberTwo);
+        // Different types
+        else if (numberOne instanceof Number && numberTwo instanceof BigDecimal)
+            result = ConvertUD.toBigDecimal(numberOne).subtract((BigDecimal) numberTwo);
+        else if (numberOne instanceof BigDecimal && numberTwo instanceof Number)
+            result = ((BigDecimal) numberOne).subtract(ConvertUD.toBigDecimal(numberTwo));
+        else
+            throw ConstantsUD.EXCEPTION_UNSUPPORTED_NUMBER_TYPE;
+
+        // Convert the result to the specified return type
+        return ConvertUD.convertToReturnType(result, returnType);
+    }
 
 	/**
-	 * Division of two parameters, the first divided by the second.
+	 * Multiplies two numbers of the same type and returns the result.
 	 * 
-	 * @param numberOne The first parameter for the division between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the division between the two
-	 *                  parameters.
-	 * @return Result of dividing the first parameter by the second as an Integer.
+	 * @param <T>       the type of the numbers to be summed, must extend Number
+	 * @param numberOne the first number to be multiplied
+	 * @param numberTwo the second number to be multiplied
+	 * @return the multiply of the two numbers
+	 * @throws IllegalArgumentException if the numbers are null or their type is not
+	 *                                  supported
 	 */
-	public static Integer divide(Integer numberOne, Integer numberTwo) {
-		return numberOne / numberTwo;
-	}
+    public static <T extends Number> BigDecimal multiply(T numberOne, T numberTwo) {
+    	return multiply(numberOne, numberTwo, BigDecimal.class);
+    }
+    
+    public static <T extends Number, R extends Number> R multiply(T numberOne, T numberTwo, Class<R> returnType) {
+    	VerifyUD.isNull(numberOne);
+    	VerifyUD.isNull(numberTwo);
+    	
+    	BigDecimal result;
+
+        if (numberOne instanceof Integer && numberTwo instanceof Integer)
+            result = BigDecimal.valueOf(numberOne.intValue()).multiply(BigDecimal.valueOf(numberTwo.intValue()));
+        else if (numberOne instanceof Double && numberTwo instanceof Double)
+            result = BigDecimal.valueOf(numberOne.doubleValue()).multiply(BigDecimal.valueOf(numberTwo.doubleValue()));
+        else if (numberOne instanceof Long && numberTwo instanceof Long)
+            result = BigDecimal.valueOf(numberOne.longValue()).multiply(BigDecimal.valueOf(numberTwo.longValue()));
+        else if (numberOne instanceof Float && numberTwo instanceof Float)
+            result = BigDecimal.valueOf(numberOne.floatValue()).multiply(BigDecimal.valueOf(numberTwo.floatValue()));
+        else if (numberOne instanceof Short && numberTwo instanceof Short)
+            result = BigDecimal.valueOf(numberOne.shortValue()).multiply(BigDecimal.valueOf(numberTwo.shortValue()));
+        else if (numberOne instanceof Byte && numberTwo instanceof Byte)
+            result = BigDecimal.valueOf(numberOne.byteValue()).multiply(BigDecimal.valueOf(numberTwo.byteValue()));
+        else if (numberOne instanceof BigDecimal && numberTwo instanceof BigDecimal)
+            result = ((BigDecimal) numberOne).multiply((BigDecimal) numberTwo);
+        // Different types
+        else if (numberOne instanceof Number && numberTwo instanceof BigDecimal)
+            result = ConvertUD.toBigDecimal(numberOne).multiply((BigDecimal) numberTwo);
+        else if (numberOne instanceof BigDecimal && numberTwo instanceof Number)
+            result = ((BigDecimal) numberOne).multiply(ConvertUD.toBigDecimal(numberTwo));
+        else
+            throw ConstantsUD.EXCEPTION_UNSUPPORTED_NUMBER_TYPE;
+
+        // Convert the result to the specified return type
+        return ConvertUD.convertToReturnType(result, returnType);
+    }
 
 	/**
-	 * Multiplication of two parameters, the first multiplied by the second.
+	 * Divides two numbers of the same type and returns the result.
 	 * 
-	 * @param numberOne The first parameter for the multiplication between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the multiplication between the two
-	 *                  parameters.
-	 * @return Result of multiplying the first parameter by the second as an
-	 *         Integer.
+	 * @param <T>       the type of the numbers to be summed, must extend Number
+	 * @param numberOne the first number to be divided
+	 * @param numberTwo the second number to be divided
+	 * @return the divide of the two numbers
+	 * @throws IllegalArgumentException if the numbers are null or their type is not
+	 *                                  supported
 	 */
-	public static Integer multiply(Integer numberOne, Integer numberTwo) {
-		return numberOne * numberTwo;
-	}
+    public static <T extends Number> BigDecimal divide(T numberOne, T numberTwo) {
+    	return divide(numberOne, numberTwo, BigDecimal.class);
+    }
+    
+    public static <T extends Number, R extends Number> R divide(T numberOne, T numberTwo, Class<R> returnType) {
+    	VerifyUD.isNull(numberOne);
+    	VerifyUD.isNull(numberTwo);
+    	
+    	BigDecimal result;
 
-	/**
-	 * int Calculator
-	 */
+        if (numberOne instanceof Integer && numberTwo instanceof Integer)
+            result = BigDecimal.valueOf(numberOne.intValue()).divide(BigDecimal.valueOf(numberTwo.intValue()));
+        else if (numberOne instanceof Double && numberTwo instanceof Double)
+            result = BigDecimal.valueOf(numberOne.doubleValue()).divide(BigDecimal.valueOf(numberTwo.doubleValue()));
+        else if (numberOne instanceof Long && numberTwo instanceof Long)
+            result = BigDecimal.valueOf(numberOne.longValue()).divide(BigDecimal.valueOf(numberTwo.longValue()));
+        else if (numberOne instanceof Float && numberTwo instanceof Float)
+            result = BigDecimal.valueOf(numberOne.floatValue()).divide(BigDecimal.valueOf(numberTwo.floatValue()));
+        else if (numberOne instanceof Short && numberTwo instanceof Short)
+            result = BigDecimal.valueOf(numberOne.shortValue()).divide(BigDecimal.valueOf(numberTwo.shortValue()));
+        else if (numberOne instanceof Byte && numberTwo instanceof Byte)
+            result = BigDecimal.valueOf(numberOne.byteValue()).divide(BigDecimal.valueOf(numberTwo.byteValue()));
+        else if (numberOne instanceof BigDecimal && numberTwo instanceof BigDecimal)
+            result = ((BigDecimal) numberOne).divide((BigDecimal) numberTwo);
+        // Different types
+        else if (numberOne instanceof Number && numberTwo instanceof BigDecimal)
+            result = ConvertUD.toBigDecimal(numberOne).divide((BigDecimal) numberTwo);
+        else if (numberOne instanceof BigDecimal && numberTwo instanceof Number)
+            result = ((BigDecimal) numberOne).divide(ConvertUD.toBigDecimal(numberTwo));
+        else
+            throw ConstantsUD.EXCEPTION_UNSUPPORTED_NUMBER_TYPE;
 
-	/**
-	 * Sum of two parameters, the first added to the second.
-	 * 
-	 * @param numberOne The first parameter for the sum of the two parameters.
-	 * @param numberTwo The second parameter for the sum between the two parameters.
-	 * @return Result of adding the first parameter to the second as an int.
-	 */
-	public static int sum(int numberOne, int numberTwo) {
-		return numberOne + numberTwo;
-	}
-
-	/**
-	 * Subtraction of two parameters, the first subtracted from the second.
-	 * 
-	 * @param numberOne The first parameter for the subtraction between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the subtraction between the two
-	 *                  parameters.
-	 * @return Result of subtracting the first parameter from the second as an int.
-	 */
-	public static int subtract(int numberOne, int numberTwo) {
-		return numberOne - numberTwo;
-	}
-
-	/**
-	 * Division of two parameters, the first divided by the second.
-	 * 
-	 * @param numberOne The first parameter for the division between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the division between the two
-	 *                  parameters.
-	 * @return Result of dividing the first parameter by the second as an int.
-	 */
-	public static int divide(int numberOne, int numberTwo) {
-		return numberOne / numberTwo;
-	}
-
-	/**
-	 * Multiplication of two parameters, the first multiplied by the second.
-	 * 
-	 * @param numberOne The first parameter for the multiplication between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the multiplication between the two
-	 *                  parameters.
-	 * @return Result of multiplying the first parameter by the second as an int.
-	 */
-	public static int multiply(int numberOne, int numberTwo) {
-		return numberOne * numberTwo;
-	}
-
-	/**
-	 * Double Calculator
-	 */
-
-	/**
-	 * Sum of two parameters, the first added to the second.
-	 * 
-	 * @param numberOne The first parameter for the sum of the two parameters.
-	 * @param numberTwo The second parameter for the sum between the two parameters.
-	 * @return Result of adding the first parameter to the second as a Double.
-	 */
-	public static Double sum(Double numberOne, Double numberTwo) {
-		return numberOne + numberTwo;
-	}
-
-	/**
-	 * Subtraction of two parameters, the first subtracted from the second.
-	 * 
-	 * @param numberOne The first parameter for the subtraction between the two
-	 *                  parameters.
-	 * @param numberTwo
-	 * 
-	 *                  The second parameter for the subtraction between the two
-	 *                  parameters.
-	 * @return Result of subtracting the first parameter from the second as a
-	 *         Double.
-	 */
-	public static Double subtract(Double numberOne, Double numberTwo) {
-		return numberOne - numberTwo;
-	}
-
-	/**
-	 * Division of two parameters, the first divided by the second.
-	 * 
-	 * @param numberOne The first parameter for the division between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the division between the two
-	 *                  parameters.
-	 * @return Result of dividing the first parameter by the second as a Double.
-	 */
-	public static Double divide(Double numberOne, Double numberTwo) {
-		return numberOne / numberTwo;
-	}
-
-	/**
-	 * Multiplication of two parameters, the first multiplied by the second.
-	 * 
-	 * @param numberOne The first parameter for the multiplication between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the multiplication between the two
-	 *                  parameters.
-	 * @return Result of multiplying two Double numbers.
-	 */
-	public static Double multiply(Double numberOne, Double numberTwo) {
-		return numberOne * numberTwo;
-	}
-
-	/**
-	 * float Calculator
-	 */
-
-	/**
-	 * Sum of two parameters, the first added to the second.
-	 * 
-	 * @param numberOne The first parameter for the sum of the two parameters.
-	 * @param numberTwo The second parameter for the sum between the two parameters.
-	 * @return Result of adding the first parameter to the second as a float.
-	 */
-	public static float sum(float numberOne, float numberTwo) {
-		return numberOne + numberTwo;
-	}
-
-	/**
-	 * Subtraction of two parameters, the first subtracted from the second.
-	 * 
-	 * @param numberOne The first parameter for the subtraction between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the subtraction between the two
-	 *                  parameters.
-	 * @return Result of subtracting the first parameter from the second as a float.
-	 */
-	public static float subtract(float numberOne, float numberTwo) {
-		return numberOne - numberTwo;
-	}
-
-	/**
-	 * Division of two parameters, the first divided by the second.
-	 * 
-	 * @param numberOne The first parameter for the division between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the division between the two
-	 *                  parameters.
-	 * @return Result of dividing the first parameter by the second as a float.
-	 */
-	public static float divide(float numberOne, float numberTwo) {
-		return numberOne / numberTwo;
-	}
-
-	/**
-	 * Multiplication of two parameters, the first multiplied by the second.
-	 * 
-	 * @param numberOne The first parameter for the multiplication between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the multiplication between the two
-	 *                  parameters.
-	 * @return Result of multiplying two float numbers.
-	 */
-	public static float multiply(float numberOne, float numberTwo) {
-		return numberOne * numberTwo;
-	}
-
-	/**
-	 * BigDecimal Calculator
-	 */
-
-	/**
-	 * Sum of two parameters, the first added to the second.
-	 * 
-	 * @param numberOne The first parameter for the sum between the two parameters.
-	 * @param numberTwo The second parameter for the sum between the two parameters.
-	 * @return Result of adding the first parameter to the second as a BigDecimal.
-	 */
-	public static BigDecimal sum(BigDecimal numberOne, BigDecimal numberTwo) {
-		return numberOne.add(numberTwo);
-	}
-
-	/**
-	 * Subtraction of two parameters, the first subtracted from the second.
-	 * 
-	 * @param numberOne The first parameter for the subtraction between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the subtraction between the two
-	 *                  parameters.
-	 * @return Result of subtracting the first parameter from the second as a
-	 *         BigDecimal.
-	 */
-	public static BigDecimal subtract(BigDecimal numberOne, BigDecimal numberTwo) {
-		return numberOne.subtract(numberTwo);
-	}
-
-	/**
-	 * Division of two parameters, the first divided by the second.
-	 * 
-	 * @param numberOne The first parameter for the division between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the division between the two
-	 *                  parameters.
-	 * @return Result of dividing the first parameter by the second as a BigDecimal.
-	 */
-	public static BigDecimal divide(BigDecimal numberOne, BigDecimal numberTwo) {
-		return numberOne.divide(numberTwo);
-	}
-
-	/**
-	 * Multiplication of two parameters, the first multiplied by the second.
-	 * 
-	 * @param numberOne The first parameter for the multiplication between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the multiplication between the two
-	 *                  parameters.
-	 * @return Result of multiplying two BigDecimal numbers.
-	 */
-	public static BigDecimal multiply(BigDecimal numberOne, BigDecimal numberTwo) {
-		return numberOne.multiply(numberTwo);
-	}
-
-	/**
-	 * Integer BigDecimal Calculator (Returns Integer)
-	 */
-
-	/**
-	 * Sum of two parameters, the first added to the second.
-	 * 
-	 * @param numberOne The first parameter for the sum of the two parameters.
-	 * @param numberTwo The second parameter for the sum between the two parameters.
-	 * @return Result of adding the first parameter to the second as an Integer.
-	 */
-	public static Integer sum(Integer numberOne, BigDecimal numberTwo) {
-		return numberOne + numberTwo.intValue();
-	}
-
-	/**
-	 * Subtraction of two parameters, the first subtracted from the second.
-	 * 
-	 * @param numberOne The first parameter for the subtraction between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the subtraction between the two
-	 *                  parameters.
-	 * @return Result of subtracting the first parameter from the second as an
-	 *         Integer.
-	 */
-	public static Integer subtract(Integer numberOne, BigDecimal numberTwo) {
-		return numberOne - numberTwo.intValue();
-	}
-
-	/**
-	 * Division of two parameters, the first divided by the second.
-	 * 
-	 * @param numberOne The first parameter for the division between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the division between the two
-	 *                  parameters.
-	 * @return Result of dividing the first parameter by the second as an Integer.
-	 */
-	public static Integer divide(Integer numberOne, BigDecimal numberTwo) {
-		return numberOne / numberTwo.intValue();
-	}
-
-	/**
-	 * Multiplication of two parameters, the first multiplied by the second.
-	 * 
-	 * @param numberOne The first parameter for the multiplication between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the multiplication between the two
-	 *                  parameters.
-	 * @return Result of multiplying the first parameter by the second as an
-	 *         Integer.
-	 */
-	public static Integer multiply(Integer numberOne, BigDecimal numberTwo) {
-		return numberOne * numberTwo.intValue();
-	}
-
-	/**
-	 * Integer Double Calculator (Returns Double)
-	 */
-
-	/**
-	 * Sum of two parameters, the first added to the second.
-	 * 
-	 * @param numberOne The first parameter for the sum of
-	 * 
-	 *                  the two parameters.
-	 * @param numberTwo The second parameter for the sum between the two parameters.
-	 * @return Result of adding the first parameter to the second as an Integer.
-	 */
-	public static Double sum(Integer numberOne, Double numberTwo) {
-		return numberOne + numberTwo;
-	}
-
-	/**
-	 * Subtraction of two parameters, the first subtracted from the second.
-	 * 
-	 * @param numberOne The first parameter for the subtraction between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the subtraction between the two
-	 *                  parameters.
-	 * @return Result of subtracting the first parameter from the second as an
-	 *         Integer.
-	 */
-	public static Double subtract(Integer numberOne, Double numberTwo) {
-		return numberOne - numberTwo;
-	}
-
-	/**
-	 * Division of two parameters, the first divided by the second.
-	 * 
-	 * @param numberOne The first parameter for the division between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the division between the two
-	 *                  parameters.
-	 * @return Result of dividing the first parameter by the second as an Integer.
-	 */
-	public static Double divide(Integer numberOne, Double numberTwo) {
-		return numberOne / numberTwo;
-	}
-
-	/**
-	 * Multiplication of two parameters, the first multiplied by the second.
-	 * 
-	 * @param numberOne The first parameter for the multiplication between the two
-	 *                  parameters.
-	 * @param numberTwo The second parameter for the multiplication between the two
-	 *                  parameters.
-	 * @return Result of multiplying the first parameter by the second as an
-	 *         Integer.
-	 */
-	public static Double multiply(Integer numberOne, Double numberTwo) {
-		return numberOne * numberTwo;
-	}
+        // Convert the result to the specified return type
+        return ConvertUD.convertToReturnType(result, returnType);
+    }
 
 	/**
 	 * Subtract two dates and return the number of days between them.
@@ -417,6 +211,8 @@ public class CalculatorUD {
 	 * @return The number of days between the two dates.
 	 */
 	public static long calculateDaysDifference(Date initialDate, Date finalDate) {
+		VerifyUD.isNull(initialDate);
+		VerifyUD.isNull(finalDate);
 		long millisecondsPerDay = 24 * 60 * 60 * 1000L;
 		long differenceInMillis = Math.abs(initialDate.getTime() - finalDate.getTime());
 		return differenceInMillis / millisecondsPerDay;
@@ -430,6 +226,8 @@ public class CalculatorUD {
 	 * @return The number of milliseconds between the two dates.
 	 */
 	public static long calculateDaysDifferenceInMillis(Date initialDate, Date finalDate) {
+		VerifyUD.isNull(initialDate);
+		VerifyUD.isNull(finalDate);
 		return Math.abs(initialDate.getTime() - finalDate.getTime());
 	}
 }

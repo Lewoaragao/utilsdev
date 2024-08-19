@@ -16,7 +16,7 @@ import java.util.Map;
  * @author Leonardo Aragão (@Lewoaragao)
  * @since 17/09/2023
  */
-@SuppressWarnings({ "unchecked", "unused" })
+@SuppressWarnings({ "unchecked" })
 public class CollectionUD {
 
 	/**

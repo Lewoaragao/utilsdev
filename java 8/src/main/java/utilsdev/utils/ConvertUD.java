@@ -1,5 +1,6 @@
 package utilsdev.utils;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -27,6 +28,14 @@ public class ConvertUD {
 	 * @since 09/14/2023
 	 */
 	public ConvertUD() {
+	}
+	
+	public static <T> String toString(T obj) {
+		return obj.toString();
+	}
+
+	public static <T> Date toDate(T obj) {
+		return new Date((long) obj);
 	}
 
 	/**
@@ -104,8 +113,7 @@ public class ConvertUD {
 	 * @return A String representing the value of the Integer.
 	 */
 	public static String integerToString(Integer integer) {
-		if (integer == null)
-			throw new IllegalArgumentException("The Integer value cannot be null.");
+		VerifyUD.isNull(integer);
 		return Integer.toString(integer);
 	}
 
@@ -118,8 +126,7 @@ public class ConvertUD {
 	 *                               Integer.
 	 */
 	public static Integer stringToInteger(String string) {
-		if (string == null)
-			throw new IllegalArgumentException("The input String cannot be null.");
+		VerifyUD.isNull(string);
 		return Integer.parseInt(string);
 	}
 
@@ -311,4 +318,49 @@ public class ConvertUD {
 		}
 		return map;
 	}
+	
+	/**
+     * Converts a Number to BigDecimal.
+     * 
+     * @param number the number to be converted
+     * @return the converted BigDecimal
+     * @throws IllegalArgumentException if the number type is not supported
+     */
+    public static BigDecimal toBigDecimal(Number number) {
+        if (number instanceof Integer)
+            return BigDecimal.valueOf(number.intValue());
+        else if (number instanceof Double)
+            return BigDecimal.valueOf(number.doubleValue());
+        else if (number instanceof Long)
+            return BigDecimal.valueOf(number.longValue());
+        else if (number instanceof Float)
+            return BigDecimal.valueOf(number.floatValue());
+        else if (number instanceof Short)
+            return BigDecimal.valueOf(number.shortValue());
+        else if (number instanceof Byte)
+            return BigDecimal.valueOf(number.byteValue());
+        else if (number instanceof BigDecimal)
+            return (BigDecimal) number;
+        else
+            throw ConstantsUD.EXCEPTION_UNSUPPORTED_NUMBER_TYPE;
+    }
+    
+    public static <R extends Number> R convertToReturnType(BigDecimal result, Class<R> returnType) {
+        if (returnType == Integer.class)
+            return returnType.cast(result.intValue());
+        else if (returnType == Double.class)
+            return returnType.cast(result.doubleValue());
+        else if (returnType == Long.class)
+            return returnType.cast(result.longValue());
+        else if (returnType == Float.class)
+            return returnType.cast(result.floatValue());
+        else if (returnType == Short.class)
+            return returnType.cast(result.shortValue());
+        else if (returnType == Byte.class)
+            return returnType.cast(result.byteValue());
+        else if (returnType == BigDecimal.class)
+            return returnType.cast(result);
+        else 
+            throw ConstantsUD.EXCEPTION_UNSUPPORTED_NUMBER_TYPE;
+    }
 }
